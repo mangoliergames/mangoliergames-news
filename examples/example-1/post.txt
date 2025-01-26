@@ -1,0 +1,5 @@
+# This is an Example Post!
+It shows how you can use Markdown in the post body. It also includes an example
+image:
+
+![Example Image](./image.png)
