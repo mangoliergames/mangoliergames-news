@@ -1,5 +1,5 @@
 # About
-Static site generator for the [Mangolier Games news posts](https://www.mangoliergames.com/news) index and pages. Generates .html files and an index from a directory contain posts, which are defined using a configuration file, a markdown text file, and any extra files like images.
+Static site generator for the [Mangolier Games news posts](https://www.mangoliergames.com/news) index and pages. Generates .html files and an index from a directory containing posts, which are defined using a configuration file, a markdown text file, and any extra files like images.
 
 ## Dependencies
 
