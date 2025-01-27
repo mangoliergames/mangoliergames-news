@@ -60,6 +60,8 @@ The post template supports the following tokens, which are loaded from the post 
 * `DATE` -- The date the post was published.
 * `TAG` -- A custom tag string for the post.
 * `BODY` -- The parsed markdown body text for the post.
+* `PATH` -- The full path to the post, including the output directory. For example, `posts/example-1`.
+* `SLUG` -- The path of the post inside of the output directory. For example, `example-1`.
 
 ### Index template
 The index template supports a single token, which is an HTML blob generated internally applying the *Index Entry Template* for each detected post:
