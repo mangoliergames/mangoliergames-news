@@ -25,10 +25,20 @@ For example, to run the generator on the sample templates and input pages suppli
 python3 generate.py --post-template templates/post.tmpl --index-template templates/index.tmpl --index-entry-template templates/index_entry.tmpl --posts examples --output outputs
 ```
 
-## Input Folder Structure
-Each post is defined as its own directory in the `posts` input folder. Each post folder must contain a `post.cfg` with three lines that define the title, date, and tag for the post. It must also contain a `post.txt` file that contains the post text formatted using Markdown. Any additional in the post directory are copied as-is from the input folder to the generated output folder.
+## Input Directory Structure
+Each post is defined as its own directory in the `posts` input directory. Each post directory must contain a `post.cfg` with three lines that define the title, date, and tag for the post. The config file can also include a fourth, optional line with a short description of the post. 
 
-Input:
+The input directory must also contain a `post.txt` file that contains the post text formatted using Markdown. Any additional in the post directory are copied as-is from the input directory to the generated output directory.
+
+Post.cfg File Format:
+```
+Example Post Name
+October 25th, 2024
+example-post
+Example optional description associated with the post. This line can be omitted!
+```
+
+Input Directory:
 ```
 examples/
 ├── example-1
@@ -40,7 +50,7 @@ examples/
 │   └── post.txt
 ```
 
-Output:
+Output Directory:
 ```
 outputs/
 ├── example-1
@@ -59,6 +69,7 @@ The post template supports the following tokens, which are loaded from the post 
 * `TITLE` -- The post title.
 * `DATE` -- The date the post was published.
 * `TAG` -- A custom tag string for the post.
+* `DESC` -- The description of the post.
 * `BODY` -- The parsed markdown body text for the post.
 * `PATH` -- The full path to the post, including the output directory. For example, `posts/example-1`.
 * `SLUG` -- The path of the post inside of the output directory. For example, `example-1`.
@@ -72,6 +83,7 @@ A partial template the specifies what the index entry HTML blob should look like
 * `TITLE` -- The post title
 * `DATE` -- The date the post was published.
 * `TAG` -- A custom tag string for the post.
+* `DESC` -- The description of the post.
 * `PATH` -- The full path to the post, including the output directory. For example, `posts/example-1`.
 * `SLUG` -- The path of the post inside of the output directory. For example, `example-1`.
 
