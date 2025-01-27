@@ -46,13 +46,21 @@ class Post(object):
 
         with open(config_path, 'r') as f:
             lines = f.readlines()
-            if len(lines) != 3:
-                print(" - Config '{}' must have 3 lines".format(config_path))
+            num_lines = len(lines)
+
+            if num_lines < 3 or num_lines > 4:
+                print(" - Config '{}' must have 3 or 4 lines".format(
+                    config_path))
                 return None
 
             title = lines[0].rstrip()
             date = lines[1].rstrip()
             tag = lines[2].rstrip()
+
+            if num_lines == 4:
+                desc = lines[3].rstrip()
+            else:
+                desc = ""
 
         # Parse the main post markdown file
         text_path = os.path.join(root, cls._TEXT_FILE_NAME)
@@ -73,13 +81,13 @@ class Post(object):
                 continue
             extra_files.append(os.path.join(root, file))
 
-        return cls(path, slug, title, date, tag, text, extra_files)
+        return cls(path, slug, title, date, desc, tag, text, extra_files)
 
     @staticmethod
     def key(post):
         return post.__parsed_date
 
-    def __init__(self, path, slug, title, date, tag, text, extra_files):
+    def __init__(self, path, slug, title, date, desc, tag, text, extra_files):
         """
         Constructs a post from various configuration options
         """
@@ -89,6 +97,7 @@ class Post(object):
         self.__title = title
         self.__date = date
         self.__parsed_date = dateutil.parser.parse(self.__date)
+        self.__desc = desc
         self.__tag = tag
 
         self.__text = text
@@ -101,6 +110,7 @@ class Post(object):
         """
         parameters = {
             'TITLE': self.__title,
+            'DESC': self.__desc,
             'TAG' : self.__tag,
             'DATE' : self.__date,
             'PATH' : self.__path,
@@ -117,6 +127,7 @@ class Post(object):
         """
         parameters = {
             'TITLE': self.__title,
+            'DESC': self.__desc,
             'TAG' : self.__tag,
             'DATE' : self.__date,
             'BODY' : self.__text,
