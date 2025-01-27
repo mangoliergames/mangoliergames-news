@@ -30,7 +30,7 @@ Each post is defined as its own directory in the `posts` input directory. Each p
 
 The input directory must also contain a `post.txt` file that contains the post text formatted using Markdown. Any additional in the post directory are copied as-is from the input directory to the generated output directory.
 
-Post.cfg File Format:
+### Post.cfg file format:
 ```
 Example Post Name
 October 25th, 2024
@@ -38,7 +38,7 @@ example-post
 Example optional description associated with the post. This line can be omitted!
 ```
 
-Input Directory:
+### Input directory structure:
 ```
 examples/
 ├── example-1
@@ -50,7 +50,7 @@ examples/
 │   └── post.txt
 ```
 
-Output Directory:
+### Output directory structure:
 ```
 outputs/
 ├── example-1
