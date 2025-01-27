@@ -119,7 +119,9 @@ class Post(object):
             'TITLE': self.__title,
             'TAG' : self.__tag,
             'DATE' : self.__date,
-            'BODY' : self.__text
+            'BODY' : self.__text,
+            'PATH' : self.__path,
+            'SLUG' : self.__slug,
         }
         text = template.format(**parameters)
 
